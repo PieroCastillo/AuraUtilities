@@ -13,7 +13,23 @@ namespace Sample
 
             var appset = new SettingsProvider();
 
-            appset.Save<AppSettings>(new AppSettings { });
+            Settings = appset.Load<AppSettings>();
+
+            Console.WriteLine(Settings.H.ToString());
+            char val = 'b';
+            
+            while (val != 'a')
+            {
+                val = Console.ReadKey().KeyChar;
+            }
+
+            appset.Save(new AppSettings { });
+        }
+
+        public static AppSettings Settings
+        {
+            get;
+            set;
         }
         
         [Serializable]

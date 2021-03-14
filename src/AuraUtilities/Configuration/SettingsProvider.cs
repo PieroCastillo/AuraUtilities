@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
@@ -32,22 +33,26 @@ namespace AuraUtilities.Configuration
         public TSettings Load<TSettings>() where TSettings : Settings, new()
         {
             var exists = File.Exists(Path);
+            Debug.WriteLine("loading settings...");
             if (exists)
             {
                 try
                 {
                     using (var sr = File.Open(Path, FileMode.Open))
                     {
+                        Debug.WriteLine("loaded correctly");
                         return (TSettings)new BinaryFormatter().Deserialize(sr);
                     }
                 }
                 catch
                 {
+                    Debug.WriteLine("default by error returned...");
                     return new TSettings();
                 }
             }
             else
             {
+                Debug.WriteLine("default returned");
                 return new TSettings();
             }
         }
