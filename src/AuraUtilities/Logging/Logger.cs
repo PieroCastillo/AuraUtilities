@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +7,7 @@ using System.Threading.Tasks;
 namespace AuraUtilities.Logging
 {
     public class Logger
-    {        
+    {
         static Logger()
         {
             Instance = new Logger();
@@ -21,11 +18,10 @@ namespace AuraUtilities.Logging
             get;
         }
 
-        private Logger() 
+        private Logger()
         {
             LogsPath = Path.GetTempPath();
         }
-
 
         private string LogsPath
         {
@@ -37,7 +33,7 @@ namespace AuraUtilities.Logging
 
         private void start(string? logsPath)
         {
-            if(logsPath is null)
+            if (logsPath is null)
             {
                 LogsPath = Path.GetTempPath();
             }
@@ -50,7 +46,7 @@ namespace AuraUtilities.Logging
             File.CreateText(actualLogFilePath).Close();
         }
 
-        internal string CreatePathName(string path) 
+        internal string CreatePathName(string path)
             => new StringBuilder().Append(LogsPath)
                                   .Append('\\')
                                   .Append("log_")
@@ -61,7 +57,7 @@ namespace AuraUtilities.Logging
                                   .Append(DateTime.Now.ToString("d.MMMM.yy  HH.mm.ss"))
                                   .Append("].log")
                                   .ToString();
-        
+
         private void append(string message, MessageType gravity)
         {
             var str_build = new StringBuilder();
@@ -78,12 +74,14 @@ namespace AuraUtilities.Logging
             str_build.Append('[').Append(DateTime.Now.ToString()).Append("][").Append(gravity.ToString()).Append("]: ").Append(message);
             using (var sw = new StreamWriter(actualLogFilePath, true))
             {
-                await sw.WriteLineAsync(str_build.ToString()); 
+                await sw.WriteLineAsync(str_build.ToString());
             }
         }
 
         public static void Start(string? path) => Instance.start(path);
+
         public static void WriteLine(string message, MessageType gravity = MessageType.Info) => Instance.append(message, gravity);
+
         public static async Task WriteLineAsync(string message, MessageType gravity = MessageType.Info) => await Instance.appendAsync(message, gravity);
 
         public static void Assert(bool condition, string message, MessageType gravity = MessageType.Info)

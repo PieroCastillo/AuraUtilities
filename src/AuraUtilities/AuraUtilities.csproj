@@ -4,6 +4,22 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <LangVersion>9.0</LangVersion>
     <Nullable>enable</Nullable>
+    <Version>0.1</Version>
+    <Authors>Piero Castillo</Authors>
+    <Company />
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/PieroCastillo/AuraUtilities</PackageProjectUrl>
+    <PackageIcon>Logo.png</PackageIcon>
+    <RepositoryUrl>https://github.com/PieroCastillo/AuraUtilities</RepositoryUrl>
+    <PackageTags>utils utilities csharp net wpf avalonia cross-platform</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\Logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>

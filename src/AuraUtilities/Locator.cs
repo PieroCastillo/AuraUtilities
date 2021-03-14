@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AuraUtilities
 {
@@ -24,7 +21,9 @@ namespace AuraUtilities
 
         private Dictionary<object, object> cache = new();
 
-        private Locator() { }
+        private Locator()
+        {
+        }
 
         /// <inheritdoc/>
         public T? GetService<T>() where T : class
