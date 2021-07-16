@@ -62,6 +62,9 @@ namespace AuraUtilities.Logging
         {
             var str_build = new StringBuilder();
             str_build.Append('[').Append(DateTime.Now.ToString()).Append("][").Append(gravity.ToString()).Append("]: ").Append(message);
+            Console.ForegroundColor = GetColor(gravity);
+            Console.WriteLine(str_build.ToString());
+
             using (var sw = new StreamWriter(actualLogFilePath, true))
             {
                 sw.WriteLine(str_build.ToString());
@@ -72,9 +75,25 @@ namespace AuraUtilities.Logging
         {
             var str_build = new StringBuilder();
             str_build.Append('[').Append(DateTime.Now.ToString()).Append("][").Append(gravity.ToString()).Append("]: ").Append(message);
+            Console.ForegroundColor = GetColor(gravity);
+            Console.WriteLine(str_build.ToString());
+
             using (var sw = new StreamWriter(actualLogFilePath, true))
             {
                 await sw.WriteLineAsync(str_build.ToString());
+            }
+        }
+
+        ConsoleColor GetColor(MessageType type)
+        {
+            switch (type)
+            {
+                case MessageType.Info: return ConsoleColor.Cyan;
+                case MessageType.Warning: return ConsoleColor.Yellow;
+                case MessageType.Error: return ConsoleColor.Red;
+                case MessageType.FatalError: return ConsoleColor.Gray;
+
+                default: throw new NotSupportedException("No available message type");
             }
         }
 
