@@ -10,74 +10,78 @@ namespace Sample
         static void Main(string[] args)
         {
             Logger.Start(null);
+            Logger.WriteLine("I'm a Info", MessageType.Info);
+            Logger.WriteLine("I'm a Warning", MessageType.Warning);
+            Logger.WriteLine("I'm a Error", MessageType.Error);
+            Logger.WriteLine("I'm a Fatal Error", MessageType.FatalError);
 
-            var appset = new SettingsProvider();
+            //var appset = new SettingsProvider();
 
-            Settings = appset.Load<AppSettings>();
+            //Settings = appset.Load<AppSettings>();
 
-            Console.WriteLine(Settings.H.ToString());
-            char val = 'b';
-            
-            while (val != 'a')
-            {
-                val = Console.ReadKey().KeyChar;
-            }
+            //Console.WriteLine(Settings.H.ToString());
+            //char val = 'b';
 
-            appset.Save(new AppSettings { });
+            //while (val != 'a')
+            //{
+            //    val = Console.ReadKey().KeyChar;
+            //}
+
+            //appset.Save(new AppSettings { });
         }
 
-        public static AppSettings Settings
-        {
-            get;
-            set;
-        }
+        //public static AppSettings Settings
+        //{
+        //    get;
+        //    set;
+        //}
         
-        [Serializable]
-        public class AppSettings : Settings
-        {
-            public double H
-            {
-                get;
-                set;
-            }
+        //[Serializable]
+        //public class AppSettings : Settings
+        //{
+        //    public double H
+        //    {
+        //        get;
+        //        set;
+        //    }
 
-            public int Size
-            {
-                get;
-                set;
-            }
+        //    public int Size
+        //    {
+        //        get;
+        //        set;
+        //    }
 
-            public Color Colour
-            {
-                get;
-                set;
-            }
-        }
-        [Serializable]
-        public struct SerializableColor : Color
-        {
-            public byte R { get; set; }
-            public byte G { get; set; }
-            public byte B { get; set; }
-        }
+        //    public Color Colour
+        //    {
+        //        get;
+        //        set;
+        //    }
+        //}
+        //[Serializable]
+        //public struct SerializableColor : Color
+        //{
+        //    public byte R { get; set; }
+        //    public byte G { get; set; }
+        //    public byte B { get; set; }
+        //}
 
-        public interface Color
-        {
-            public byte R 
-            { 
-                get;
-                set;
-            }
-            public byte G
-            {
-                get;
-                set;
-            }
-            public byte B
-            {
-                get;
-                set;
-            }
-        }
+        //public interface Color
+        //{
+        //    public byte R 
+        //    { 
+        //        get;
+        //        set;
+        //    }
+        //    public byte G
+        //    {
+        //        get;
+        //        set;
+        //    }
+        //    public byte B
+        //    {
+        //        get;
+        //        set;
+        //    }
+        //}
     }
 }

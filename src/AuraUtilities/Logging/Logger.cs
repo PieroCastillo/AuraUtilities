@@ -91,7 +91,7 @@ namespace AuraUtilities.Logging
                 case MessageType.Info: return ConsoleColor.Cyan;
                 case MessageType.Warning: return ConsoleColor.Yellow;
                 case MessageType.Error: return ConsoleColor.Red;
-                case MessageType.FatalError: return ConsoleColor.Gray;
+                case MessageType.FatalError: return ConsoleColor.DarkRed;
 
                 default: throw new NotSupportedException("No available message type");
             }
