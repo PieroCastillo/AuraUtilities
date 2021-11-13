@@ -5,7 +5,7 @@
     <LangVersion>9.0</LangVersion>
     <Nullable>enable</Nullable>
     <Version>0.1.5.3</Version>
-    <PackageVersion>0.1.5.2</PackageVersion>
+    <PackageVersion>0.1.5.3</PackageVersion>
     <Authors>Piero Castillo</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
