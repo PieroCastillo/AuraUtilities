@@ -13,36 +13,32 @@ namespace AuraUtilities
             if (url == null)
                 return;
 
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.RedirectStandardOutput = true;
+            startInfo.RedirectStandardError = true;
+            startInfo.UseShellExecute = false;
+            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            startInfo.CreateNoWindow = true;
+
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                var ps = new ProcessStartInfo()
-                {
-                     CreateNoWindow = true,
-                     FileName = "powershell",
-                     Arguments = $"start \"{url}\""
-                };
-                Process.Start(ps);
+                startInfo.FileName = "powershell";
+                startInfo.Arguments = $"start \"{url}\"";
+                
+                Process.Start(startInfo);
                 Console.WriteLine("url opened");
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                var ps = new ProcessStartInfo()
-                {
-                     CreateNoWindow = true,
-                     FileName = "open",
-                     Arguments = $"-n {url}"
-                };
-                Process.Start(ps);
+                startInfo.FileName = "open";
+                startInfo.Arguments = $"-n {url}";
+                Process.Start(startInfo);
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                var ps = new ProcessStartInfo()
-                {
-                     CreateNoWindow = true,
-                     FileName = "xdg-open",
-                     Arguments = $"{url}"
-                };
-                Process.Start(ps);
+                startInfo.FileName = "xdg-open";
+                startInfo.Arguments = $"{url}";
+                Process.Start(startInfo);
             }
         }
     }
