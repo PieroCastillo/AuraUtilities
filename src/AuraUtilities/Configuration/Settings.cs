@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace AuraUtilities.Configuration
 {
-    [Serializable]
-    public class Settings
+    public interface ISettings
     {
     }
 }
