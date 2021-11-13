@@ -26,7 +26,7 @@ namespace AuraUtilities
                 startInfo.Arguments = $"start \"{url}\"";
                 
                 Process.Start(startInfo);
-                Console.WriteLine("url opened");
+                
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
