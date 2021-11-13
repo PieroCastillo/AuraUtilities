@@ -4,7 +4,8 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <LangVersion>9.0</LangVersion>
     <Nullable>enable</Nullable>
-    <Version>0.1.5</Version>
+    <Version>0.1.5.1</Version>
+    <PackageVersion>0.1.5.1</PackageVersion>
     <Authors>Piero Castillo</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
