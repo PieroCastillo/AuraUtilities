@@ -30,13 +30,13 @@ namespace AuraUtilities
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                startInfo.FileName = "open";
+                startInfo.FileName = "xdg-open";
                 startInfo.Arguments = $"-n {url}";
                 Process.Start(startInfo);
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                startInfo.FileName = "xdg-open";
+                startInfo.FileName = "open";
                 startInfo.Arguments = $"{url}";
                 Process.Start(startInfo);
             }
